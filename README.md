@@ -1,4 +1,4 @@
-# wishlist
+# Wishlist
 
 ## Project setup
 ```
