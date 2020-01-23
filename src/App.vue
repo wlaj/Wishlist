@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <Header />
     <Wishlist v-bind:wishlist="wishlist" v-on:del-wishlist="deleteWishlist" />
   </div>
 </template>
 
 <script>
+import Header from './components/layout/Header';
 import Wishlist from './components/Wishlist';
 
 export default {
   name: 'app',
   components: {
+    Header,
     Wishlist
   },
   data() {
