@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+    <AddWish />
     <Wishlist v-bind:wishlist="wishlist" v-on:del-wishlist="deleteWishlist" />
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
 import Header from './components/layout/Header';
 import Wishlist from './components/Wishlist';
+import AddWish from './components/AddWish';
 
 export default {
   name: 'app',
   components: {
     Header,
-    Wishlist
+    Wishlist,
+    AddWish
   },
   data() {
     return {
@@ -56,6 +59,19 @@ export default {
   body {
     font-family: 'Montserrat';
     line-height: 1.4;
+  }
+
+  .btn {
+    display: inline-block;
+    border: none;
+    background: #555;
+    color: #fff;
+    padding: 7px 20px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #666;
   }
 
 </style>
