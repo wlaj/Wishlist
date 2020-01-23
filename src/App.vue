@@ -1,28 +1,53 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Wishlist v-bind:wishlist="wishlist" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Wishlist from './components/Wishlist';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Wishlist
+  },
+  data() {
+    return {
+      wishlist: [
+        {
+          id: 1,
+          title: "Todo one",
+          completed: false
+        },
+        {
+          id: 1,
+          title: "Todo one",
+          completed: false
+        },
+        {
+          id: 1,
+          title: "Todo one",
+          completed: false
+        }
+      ]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Montserrat';
+    line-height: 1.4;
+  }
+
 </style>
