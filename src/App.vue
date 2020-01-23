@@ -10,6 +10,7 @@
 import Header from './components/layout/Header';
 import Wishlist from './components/Wishlist';
 import AddWish from './components/AddWish';
+import axios from 'axios';
 
 export default {
   name: 'app',
@@ -20,23 +21,7 @@ export default {
   },
   data() {
     return {
-      wishlist: [
-        {
-          id: 1,
-          title: "Wishlist one",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "Wishlist two",
-          completed: false
-        },
-        {
-          id: 3,
-          title: "Wishlist three",
-          completed: false
-        }
-      ]
+      wishlist: []
     }
   },
   methods: {
@@ -44,8 +29,12 @@ export default {
       this.wishlist = this.wishlist.filter(wishlist => wishlist.id !== id);
     },
     addWish(newWish) {
-      this.wishes = [...this.wishes, newWish];
+      this.wishes = [...this.wishlist, newWish];
     }
+  },
+  created() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    .then(res => this.wishlist = res.data)
   }
 }
 </script>
