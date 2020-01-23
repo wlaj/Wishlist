@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form>
+        <form @submit="addWish">
         <input type="text" v-model="title" name="title" placeholder="Add wishlist..">
         <input type="submit" value="Submit" class="btn">
         </form>
@@ -8,11 +8,26 @@
 </template>
 
 <script>
+import uuid from 'uuid';
 export default {
     name: "AddWishlist",
     data() {
         return {
          title: ''
+        }
+    },
+    methods: {
+        addWish(e) {
+            e.preventDefault();
+            const newWish = {
+                id: uuid.v4(),
+                title: this.title,
+                completed: false
+            }
+            // Send up to parent
+            this.$emit('add-wish', newWish);
+
+            this.title = '';
         }
     }
 }

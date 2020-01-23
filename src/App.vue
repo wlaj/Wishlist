@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <AddWish />
+    <AddWish v-on:add-wish="addWish"/>
     <Wishlist v-bind:wishlist="wishlist" v-on:del-wishlist="deleteWishlist" />
   </div>
 </template>
@@ -42,6 +42,9 @@ export default {
   methods: {
     deleteWishlist (id) {
       this.wishlist = this.wishlist.filter(wishlist => wishlist.id !== id);
+    },
+    addWish(newWish) {
+      this.wishes = [...this.wishes, newWish];
     }
   }
 }
