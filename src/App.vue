@@ -24,12 +24,17 @@ export default {
       wishlist: []
     }
   },
+  // Hier is een fout
   methods: {
-    deleteWishlist (id) {
-      this.wishlist = this.wishlist.filter(wishlist => wishlist.id !== id);
+    deleteWish (id) {
+      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then(res => this.wishlist = this.wishlist.filter(wishlist => wishlist.id !== id))
     },
     addWish(newWish) {
-      this.wishes = [...this.wishlist, newWish];
+      const { title, completed } = newWish;
+
+      axios.post('https://jsonplaceholder.typicode.com/todos', { title, completed })
+      .then(res => this.wishlist = [...this.wishlist, newWish, res.data])
     }
   },
   created() {

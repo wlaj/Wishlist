@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import uuid from 'uuid';
 export default {
     name: "AddWishlist",
     data() {
@@ -20,7 +19,6 @@ export default {
         addWish(e) {
             e.preventDefault();
             const newWish = {
-                id: uuid.v4(),
                 title: this.title,
                 completed: false
             }
